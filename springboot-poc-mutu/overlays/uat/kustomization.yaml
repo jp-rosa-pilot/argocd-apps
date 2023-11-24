@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ../../base
+#namePrefix: sit-
+
+configMapGenerator:
+- name: springboot-poc-mutu
+  files:
+    - application_config_override.yaml
+  literals:
+    - MAX_JVM_MEMORY=512
+    - MIN_JVM_MEMORY=512  
+      
+secretGenerator:
+- name: springboot-poc-mutu
+  files:
+    - application_secret_override.yaml
+  literals:
+    - FRUIT=apple
+    - VEGETABLE=carrot
+
+images:
+- name: zawthanoo/springboot-poc-mutu
+  newName: zawthanoo/springboot-poc-mutu
+  newTag: 1.0.0-315-bcbf0226

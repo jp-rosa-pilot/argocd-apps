@@ -1,0 +1,7 @@
+server:
+  port: 8082
+  servlet:
+    contextPath: /demo
+custom:
+  config:
+    value: Welcome to CICD demo!
