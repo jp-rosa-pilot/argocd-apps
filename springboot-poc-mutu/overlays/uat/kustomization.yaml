@@ -22,6 +22,6 @@ secretGenerator:
     - VEGETABLE=carrot
 
 images:
-- name: zawthanoo/springboot-poc-mutu
-  newName: zawthanoo/springboot-poc-mutu
-  newTag: 1.0.0-315-bcbf0226
+- name: image-registry.openshift-image-registry.svc:5000/devteam/springboot-poc-mutu
+  newName: image-registry.openshift-image-registry.svc:5000/devteam/springboot-poc-mutu
+  newTag: 307964279cde50f5d4bd405b385debe0c72de1e4
