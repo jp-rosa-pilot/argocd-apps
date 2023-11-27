@@ -1,19 +1,19 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-generatorOptions:
-  disableNameSuffixHash: false
-  labels:
-     foo: YOUR_CUSTOMIZE_LABELS
+# generatorOptions:
+#   disableNameSuffixHash: false
+#   labels:
+#      foo: YOUR_CUSTOMIZE_LABELS
 resources:
 - ../../base
 #namePrefix: sit-
 
 - name: springboot-poc-mutu
-  generatorOptions:
-    annotations:
-      reloader.stakater.com/match: "true"
-  options:
-    disableNameSuffixHash: false
+  # generatorOptions:
+  #   annotations:
+  #     reloader.stakater.com/match: "true"
+  # options:
+  #   disableNameSuffixHash: false
   files:
     - application_config_override.yaml
   literals:
@@ -22,11 +22,11 @@ resources:
       
 secretGenerator:
 - name: springboot-poc-mutu
-  generatorOptions:
-    annotations:
-      reloader.stakater.com/match: "true"
-  options:
-    disableNameSuffixHash: false
+  # generatorOptions:
+  #   annotations:
+  #     reloader.stakater.com/match: "true"
+  # options:
+  #   disableNameSuffixHash: false
   files:
     - application_secret_override.yaml
 images:
