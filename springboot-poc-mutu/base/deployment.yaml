@@ -21,6 +21,7 @@ spec:
         - name: springboot-poc-mutu
           image: image-registry.openshift-image-registry.svc.cluster.local:5000/devteam/springboot-poc-mutu:307964279cde50f5d4bd405b385debe0c72de1e4
           imagePullPolicy: IfNotPresent
+          ports:
           - containerPort: 8080
             protocol: TCP              
           readinessProbe:
