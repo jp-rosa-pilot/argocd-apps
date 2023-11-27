@@ -4,9 +4,7 @@ metadata:
   name: springboot-poc-mutu
   labels:
     app: springboot-poc-mutu
-    chart: springboot-poc-mutu-0.1.0
-    release: springboot-poc-mutu-k8s
-    heritage: k8s-manifest
+    release: springboot-poc-mutu
   annotations:
 spec:
   type: ClusterIP
