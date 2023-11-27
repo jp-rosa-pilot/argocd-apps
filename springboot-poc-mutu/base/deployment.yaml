@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: springboot-poc-mutu
-          image: THIS_IMAGE_HAVE_TO_BE_REPLACED
+          image: image-registry.openshift-image-registry.svc:5000/devteam/springboot-poc-mutu:307964279cde50f5d4bd405b385debe0c72de1e4
           imagePullPolicy: IfNotPresent
           ports:
             - name: api
