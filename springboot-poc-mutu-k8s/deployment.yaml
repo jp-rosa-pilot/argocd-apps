@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    reloader.stakater.com/search: "true"
+  name: springboot-poc-mutu-deployment
+  labels:
+    app: springboot-poc-mutu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-poc-mutu
+  template:
+    metadata:
+      labels:
+        app: springboot-poc-mutu
+    spec:
+      containers:
+      - name: springboot-poc-mutu
+        image: image-registry.openshift-image-registry.svc:5000/devteam/springboot-poc-mutu:307964279cde50f5d4bd405b385debe0c72de1e4
+        ports:
+        - containerPort: 8082
+        readinessProbe:
+          httpGet:
+            path: /demo/actuator/health/liveness
+            port: 8082
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /spring-k8s
+            port: 8082
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        volumeMounts:
+        - name: springboot-poc-mutu-config-volume
+          readOnly: true
+          mountPath: /opt/mutu/config/application_config_override.yaml
+          subPath: application_config_override.yaml
+        - name: springboot-poc-mutu-secret-volume
+          readOnly: true
+          mountPath: /opt/mutu/config/application_secret_override.yaml
+          subPath: application_secret_override.yaml
+      imagePullSecrets:
+      - name: dockerconfigjson-github-com
+      volumes:
+        - name: springboot-poc-mutu-config-volume
+          configMap:
+            name: springboot-poc-mutu-config
+            items:
+            - key: application_config_override.yaml
+              path: application_config_override.yaml
+        - name: springboot-poc-mutu-secret-volume
+          secret:
+            secretName: springboot-poc-mutu-secret

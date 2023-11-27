@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name:  springboot-poc-mutu-service
+  labels:
+    name:  springboot-poc-mutu-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8082
+    protocol: TCP
+    targetPort: 8082
+  selector:
+    app: springboot-poc-mutu
