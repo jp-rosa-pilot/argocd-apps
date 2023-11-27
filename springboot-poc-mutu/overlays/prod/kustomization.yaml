@@ -20,15 +20,15 @@ configMapGenerator:
     - MAX_JVM_MEMORY=512
     - MIN_JVM_MEMORY=512  
       
-secretGenerator:
-- name: springboot-poc-mutu
-  generatorOptions:
-    annotations:
-      reloader.stakater.com/match: "true"
-  options:
-    disableNameSuffixHash: false
-  files:
-    - application_secret_override.yaml
+# secretGenerator:
+# - name: springboot-poc-mutu
+#   generatorOptions:
+#     annotations:
+#       reloader.stakater.com/match: "true"
+#   options:
+#     disableNameSuffixHash: false
+#   files:
+#     - application_secret_override.yaml
 images:
 - name: image-registry.openshift-image-registry.svc:5000/devteam/springboot-poc-mutu
   newName: image-registry.openshift-image-registry.svc:5000/devteam/springboot-poc-mutu

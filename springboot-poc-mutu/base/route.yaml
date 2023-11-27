@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: springboot-poc-mutu
+  name: springboot-poc-mutu
+spec:
+  port:
+    targetPort: 8082-tcp
+  to:
+    kind: Service
+    name: springboot-poc-mutu
+    weight: 100

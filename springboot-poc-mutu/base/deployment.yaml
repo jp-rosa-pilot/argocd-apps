@@ -1,8 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  # annotations:
-  #   reloader.stakater.com/search: "true"
   name: springboot-poc-mutu
   labels:
     app: springboot-poc-mutu
@@ -35,35 +33,3 @@ spec:
               port: 8082
             initialDelaySeconds: 15
             periodSeconds: 15
-          env:
-            - name: NODE_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: spec.nodeName
-          envFrom:
-            - configMapRef:
-                name: springboot-poc-mutu
-          resources:
-            requests:
-              memory: 1024Mi
-          volumeMounts:
-            - name: springboot-poc-mutu-config-volume
-              readOnly: true
-              mountPath: "/opt/jp/config/application_config_override.yaml"
-              subPath: application_config_override.yaml
-            - name: springboot-poc-mutu-secret-config-volume
-              readOnly: true
-              mountPath: "/opt/jp/config/application_secret_override.yaml"
-              subPath: application_secret_override.yaml
-      # imagePullSecrets:
-      #   - name: dockerhub-image-pull-secret
-      volumes:
-        - name: springboot-poc-mutu-secret-config-volume
-          secret:
-            secretName: springboot-poc-mutu
-        - name: springboot-poc-mutu-config-volume
-          configMap:
-            name: springboot-poc-mutu
-            items:
-              - key: application_config_override.yaml
-                path: application_config_override.yaml
