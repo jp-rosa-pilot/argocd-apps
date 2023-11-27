@@ -1,8 +1,19 @@
 resources:
 - ../../base
+#namePrefix: sit-
+
+generatorOptions:
+  disableNameSuffixHash: false
+  labels:
+     foo: YOUR_CUSTOMIZE_LABELS
 
 configMapGenerator:
 - name: springboot-poc-mutu
+  generatorOptions:
+    annotations:
+      reloader.stakater.com/match: "true"
+  options:
+    disableNameSuffixHash: false
   files:
     - application_config_override.yaml
   literals:
@@ -11,6 +22,11 @@ configMapGenerator:
       
 secretGenerator:
 - name: springboot-poc-mutu
+  generatorOptions:
+    annotations:
+      reloader.stakater.com/match: "true"
+  options:
+    disableNameSuffixHash: false
   files:
     - application_secret_override.yaml
 images:
