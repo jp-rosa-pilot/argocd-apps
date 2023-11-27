@@ -30,6 +30,6 @@ secretGenerator:
   files:
     - application_secret_override.yaml
 images:
-- name: image-registry.openshift-image-registry.svc:5000/devteam/springboot-poc-mutu
+- name: springboot-poc-mutu
   newName: image-registry.openshift-image-registry.svc:5000/devteam/springboot-poc-mutu
   newTag: 307964279cde50f5d4bd405b385debe0c72de1e4
