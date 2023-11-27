@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: springboot-poc-mutu
   labels:
+    pipelinesascode.tekton.dev/on-event: pull_request
+    pipelinesascode.tekton.dev/on-target-branch: devteam
+    repo_name: springboot-poc-mutu
     app: springboot-poc-mutu
 spec:
   replicas: 1
@@ -16,7 +19,7 @@ spec:
     spec:
       containers:
         - name: springboot-poc-mutu
-          image: image-registry.openshift-image-registry.svc:5000/devteam/springboot-poc-mutu:307964279cde50f5d4bd405b385debe0c72de1e4
+          image: image-registry.openshift-image-registry.svc.cluster.local:5000/devteam/springboot-poc-mutu:307964279cde50f5d4bd405b385de
           imagePullPolicy: IfNotPresent
           ports:
             - name: api
