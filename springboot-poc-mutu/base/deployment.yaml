@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    reloader.stakater.com/search: "true"
+  # annotations:
+  #   reloader.stakater.com/search: "true"
   name: springboot-poc-mutu
   labels:
     app: springboot-poc-mutu
@@ -11,17 +11,14 @@ spec:
   selector:
     matchLabels:
       app: springboot-poc-mutu
-      release: springboot-poc-mutu
   template:
     metadata:
       labels:
         app: springboot-poc-mutu
-        release: springboot-poc-mutu
-        checksum-config: bf6bba16c2a8731040fcfe4f0e886a5ac13caaccdf57c97b591e250f4f880da
     spec:
       containers:
         - name: springboot-poc-mutu
-          image: "THIS_IMAGE_HAVE_TO_BE_REPLACED"
+          image: THIS_IMAGE_HAVE_TO_BE_REPLACED
           imagePullPolicy: IfNotPresent
           ports:
             - name: api
@@ -54,16 +51,16 @@ spec:
               readOnly: true
               mountPath: "/opt/jp/config/application_config_override.yaml"
               subPath: application_config_override.yaml
-            # - name: springboot-poc-mutu-secret-config-volume
-            #   readOnly: true
-            #   mountPath: "/opt/jp/config/application_secret_override.yaml"
-            #   subPath: application_secret_override.yaml
+            - name: springboot-poc-mutu-secret-config-volume
+              readOnly: true
+              mountPath: "/opt/jp/config/application_secret_override.yaml"
+              subPath: application_secret_override.yaml
       # imagePullSecrets:
       #   - name: dockerhub-image-pull-secret
       volumes:
-        # - name: springboot-poc-mutu-secret-config-volume
-        #   secret:
-        #     secretName: springboot-poc-mutu
+        - name: springboot-poc-mutu-secret-config-volume
+          secret:
+            secretName: springboot-poc-mutu
         - name: springboot-poc-mutu-config-volume
           configMap:
             name: springboot-poc-mutu
