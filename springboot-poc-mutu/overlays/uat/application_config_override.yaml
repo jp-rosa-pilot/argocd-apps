@@ -2,5 +2,9 @@ server:
   port: 8082
   servlet:
     contextPath: /demo
+spring:
+  datasource:
+    username: sa
+    password: password    
 my-config:
   message: This is test message for UAT
