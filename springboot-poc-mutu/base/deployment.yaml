@@ -21,19 +21,20 @@ spec:
         - name: springboot-poc-mutu
           image: image-registry.openshift-image-registry.svc.cluster.local:5000/devteam/springboot-poc-mutu:307964279cde50f5d4bd405b385debe0c72de1e4
           imagePullPolicy: IfNotPresent
-          ports:
-            - name: api
-              containerPort: 8080
+          - containerPort: 8080
+            protocol: TCP              
           readinessProbe:
             httpGet:
               path: /demo/actuator/health/readiness
               port: 8080
+              scheme: HTTP
             initialDelaySeconds: 60
             periodSeconds: 15
           livenessProbe:
             httpGet:
               path: /demo/actuator/health/liveness
               port: 8080
+              scheme: HTTP
             initialDelaySeconds: 15
             periodSeconds: 15
           env:
