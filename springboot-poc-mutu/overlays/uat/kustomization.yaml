@@ -5,7 +5,7 @@ generatorOptions:
   labels:
      foo: YOUR_CUSTOMIZE_LABELS
 resources:
-  - ../../base
+- ../../base
 
 - name: springboot-poc-mutu
   generatorOptions:
