@@ -2,33 +2,18 @@ resources:
 - ../../base
 #namePrefix: sit-
 
-generatorOptions:
-  disableNameSuffixHash: false
-  labels:
-     foo: YOUR_CUSTOMIZE_LABELS
-
 configMapGenerator:
 - name: springboot-poc-mutu
-  generatorOptions:
-    annotations:
-      reloader.stakater.com/match: "true"
-  options:
-    disableNameSuffixHash: false
   files:
     - application_config_override.yaml
   literals:
     - MAX_JVM_MEMORY=512
     - MIN_JVM_MEMORY=512  
       
-# secretGenerator:
-# - name: springboot-poc-mutu
-#   generatorOptions:
-#     annotations:
-#       reloader.stakater.com/match: "true"
-#   options:
-#     disableNameSuffixHash: false
-#   files:
-#     - application_secret_override.yaml
+secretGenerator:
+- name: springboot-poc-mutu
+  files:
+    - application_secret_override.yaml
 images:
 - name: image-registry.openshift-image-registry.svc:5000/devteam/springboot-poc-mutu
   newName: image-registry.openshift-image-registry.svc:5000/devteam/springboot-poc-mutu
