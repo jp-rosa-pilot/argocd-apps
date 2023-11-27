@@ -9,7 +9,7 @@ spec:
     app: springboot-poc-mutu
   type: ClusterIP
   ports:
-    - port: 8082
-      targetPort: 8082
+    - name: 8080-tcp
+      port: 8080
       protocol: TCP
-      name: api
+      targetPort: 8080
