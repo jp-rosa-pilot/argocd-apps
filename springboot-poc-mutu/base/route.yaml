@@ -6,7 +6,7 @@ metadata:
   name: springboot-poc-mutu
 spec:
   port:
-    targetPort: 8082-tcp
+    targetPort: 8080-tcp
   to:
     kind: Service
     name: springboot-poc-mutu
