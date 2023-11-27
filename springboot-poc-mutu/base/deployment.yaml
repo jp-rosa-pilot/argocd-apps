@@ -27,13 +27,13 @@ spec:
           readinessProbe:
             httpGet:
               path: /demo/actuator/health/readiness
-              port: 8082
+              port: 8080
             initialDelaySeconds: 60
             periodSeconds: 15
           livenessProbe:
             httpGet:
               path: /demo/actuator/health/liveness
-              port: 8082
+              port: 8080
             initialDelaySeconds: 15
             periodSeconds: 15
           env:
