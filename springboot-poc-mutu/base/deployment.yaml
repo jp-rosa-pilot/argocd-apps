@@ -1,6 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    reloader.stakater.com/search: "true"
   name: springboot-poc-mutu
   labels:
     app: springboot-poc-mutu
@@ -22,7 +24,7 @@ spec:
     spec:
       containers:
         - name: springboot-poc-mutu
-          image: "zawthanoo/springboot-poc-mutu:1.0.0-310-552069fb"
+          image: "THIS_IMAGE_HAVE_TO_BE_REPLACED"
           imagePullPolicy: IfNotPresent
           ports:
             - name: api
@@ -53,11 +55,11 @@ spec:
           volumeMounts:
             - name: springboot-poc-mutu-config-volume
               readOnly: true
-              mountPath: "/opt/mutu/config/application_config_override.yaml"
+              mountPath: "/opt/jp/config/application_config_override.yaml"
               subPath: application_config_override.yaml
             - name: springboot-poc-mutu-secret-config-volume
               readOnly: true
-              mountPath: "/opt/mutu/config/application_secret_override.yaml"
+              mountPath: "/opt/jp/config/application_secret_override.yaml"
               subPath: application_secret_override.yaml
       imagePullSecrets:
         - name: dockerhub-image-pull-secret
