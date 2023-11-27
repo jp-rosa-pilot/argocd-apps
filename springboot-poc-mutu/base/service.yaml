@@ -8,6 +8,7 @@ spec:
   selector:
     app: springboot-poc-mutu
   type: ClusterIP
+  sessionAffinity: None
   ports:
     - name: 8080-tcp
       port: 8080
