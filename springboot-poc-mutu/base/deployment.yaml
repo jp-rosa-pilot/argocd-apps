@@ -23,7 +23,7 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - name: api
-              containerPort: 8082
+              containerPort: 8080
           readinessProbe:
             httpGet:
               path: /demo/actuator/health/readiness
