@@ -11,15 +11,12 @@ spec:
   selector:
     matchLabels:
       app: springboot-poc-mutu
-      release: springboot-poc-mutu-k8s
+      release: springboot-poc-mutu
   template:
     metadata:
       labels:
         app: springboot-poc-mutu
-        chart: springboot-poc-mutu-0.1.0
-        release: springboot-poc-mutu-k8s
-        heritage: k8s-manifest
-        component: api-proc-layer
+        release: springboot-poc-mutu
         checksum-config: bf6bba16c2a8731040fcfe4f0e886a5ac13caaccdf57c97b591e250f4f880da
     spec:
       containers:
@@ -61,8 +58,8 @@ spec:
             #   readOnly: true
             #   mountPath: "/opt/jp/config/application_secret_override.yaml"
             #   subPath: application_secret_override.yaml
-      imagePullSecrets:
-        - name: dockerhub-image-pull-secret
+      # imagePullSecrets:
+      #   - name: dockerhub-image-pull-secret
       volumes:
         # - name: springboot-poc-mutu-secret-config-volume
         #   secret:
