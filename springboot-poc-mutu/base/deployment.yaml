@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: springboot-poc-mutu
-          image: image-registry.openshift-image-registry.svc.cluster.local:5000/devteam/springboot-poc-mutu:e75379177f23aa3e0c4859453c073b81cd5a5f9b
+          image: image-registry.openshift-image-registry.svc.cluster.local:5000/devteam/springboot-poc-mutu:dcd0d7e193037928aafd4d960957b4f018bcc451
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
