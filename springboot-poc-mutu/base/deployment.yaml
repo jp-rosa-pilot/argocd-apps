@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: springboot-poc-mutu
-          image: 1.2.3.4.5.6
+          image: image-registry.openshift-image-registry.svc.cluster.local:5000/devteam/springboot-poc-mutu:f8f6e070dd385382331045b9dcde4ff88a33bad2
           # image: NEW_DOCKER_VERSION_HAVE_TO_BE_UPDATED
           imagePullPolicy: IfNotPresent
           ports:
