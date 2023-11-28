@@ -2,6 +2,8 @@ server:
   port: 8080
   servlet:
     contextPath: /demo
+springdoc:
+  packagesToScan: org.jp.spring    
 spring:
   datasource:
     username: sa
