@@ -19,12 +19,12 @@ spec:
     spec:
       containers:
         - name: springboot-poc-mutu
-          image: image-registry.openshift-image-registry.svc.cluster.local:5000/devteam/springboot-poc-mutu:307964279cde50f5d4bd405b385debe0c72de1e4
+          image: 1.2.3.4.5.6
           # image: NEW_DOCKER_VERSION_HAVE_TO_BE_UPDATED
           imagePullPolicy: IfNotPresent
           ports:
-          - containerPort: 8080
-            protocol: TCP              
+            - containerPort: 8080
+              protocol: TCP
           readinessProbe:
             httpGet:
               path: /demo/actuator/health/readiness
